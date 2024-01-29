@@ -17,6 +17,8 @@ export default {
     const menuVisible = inject<Ref<boolean>>('menuVisible')!
     console.log('topNav获取的menuVisible为:' + menuVisible?.value)
     const toggleMenu = () => {
+      console.log(1);
+      
       menuVisible.value = !menuVisible.value
     }
     return {
@@ -31,7 +33,10 @@ export default {
   background: pink;
   display: flex;
   padding: 16px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 10;
   justify-content: center;
   align-items: center;
