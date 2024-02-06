@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggle" :class="{ checked: value }">
+  <button @click="toggle" class="wei-switch" :class="{ 'wei-checked': value }">
     <span></span>
   </button>
 </template>
@@ -23,10 +23,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
-button {
+.wei-switch {
   height: $h;
   width: $h * 2;
   border: none;
@@ -34,7 +34,7 @@ button {
   border-radius: 11px;
   position: relative;
 }
-button > span {
+.wei-switch > span {
   position: absolute;
   top: 2px;
   left: 2px;
@@ -44,13 +44,13 @@ button > span {
   border-radius: 11px;
   transition: left 0.25s;
 }
-button.checked {
+.wei-switch.wei-checked {
   background: blue;
 }
-button.checked > span {
+.wei-switch.wei-checked > span {
   left: calc(100% - #{$h2} - 2px);
 }
-button:focus {
+.wei-switch:focus {
   outline: none;
 }
 </style>

@@ -1,11 +1,12 @@
 <template>
-  <div class="topNav">
-    <div class="logo">LOGO</div>
-    <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+  <div class="wei-topNav">
+    <div class="wei-logoWrap">
+      <img class="wei-logo" src="../assets//wei-Logo.svg" alt="" />
+    </div>
+    <ul class="wei-menu">
+      <li>文档</li>
     </ul>
-    <span class="toggleAside" @click="toggleMenu"></span>
+    <span class="wei-toggleAside" @click="toggleMenu"></span>
   </div>
 </template>
 
@@ -15,10 +16,8 @@ import { inject, Ref } from 'vue'
 export default {
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')!
-    console.log('topNav获取的menuVisible为:' + menuVisible?.value)
+    console.log('wei-topNav获取的menuVisible为:' + menuVisible?.value)
     const toggleMenu = () => {
-      console.log(1);
-      
       menuVisible.value = !menuVisible.value
     }
     return {
@@ -29,8 +28,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topNav {
-  background: pink;
+.wei-topNav {
+  background: linear-gradient(145deg, #b7e9e6 0, #7fd5dc 100%);
   display: flex;
   padding: 16px;
   position: fixed;
@@ -40,11 +39,17 @@ export default {
   z-index: 10;
   justify-content: center;
   align-items: center;
-  > .logo {
+  box-shadow: 0 5px 5px rgba(51, 51, 51, 0.1);
+  > .wei-logoWrap {
     max-width: 6em;
     margin-right: auto;
+
+    > .wei-logo {
+      width: 40px;
+      height: 40px;
+    }
   }
-  > .menu {
+  > .wei-menu {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
@@ -52,7 +57,7 @@ export default {
       margin: 0 1em;
     }
   }
-  > .toggleAside {
+  > .wei-toggleAside {
     width: 24px;
     height: 24px;
     background: red;
@@ -63,13 +68,13 @@ export default {
     display: none;
   }
   @media (max-width: 500px) {
-    > .menu {
+    > .wei-menu {
       display: none;
     }
-    > .logo {
+    > .wei-logoWrap {
       margin: 0 auto;
     }
-    > .toggleAside {
+    > .wei-toggleAside {
       display: inline-block;
     }
   }

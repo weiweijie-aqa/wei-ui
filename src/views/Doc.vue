@@ -27,12 +27,11 @@
 </template>
 <script lang="ts">
 import { Ref, inject } from 'vue'
-import TopNav from '../components/TopNav.vue'
+import TopNav from '../components/topnav.vue'
 export default {
   components: { TopNav },
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')
-    console.log('topNav获取的menuVisible为:' + menuVisible?.value)
     return {
       menuVisible,
     }
@@ -49,10 +48,10 @@ export default {
   }
   > .content {
     flex-grow: 1;
-    padding-top: 60px;
+    padding-top: 80px;
     padding-left: 156px;
     @media (max-width: 500px) {
-      padding-left: 0; 
+      padding-left: 0;
     }
   }
 }
@@ -64,7 +63,7 @@ export default {
   > main {
     flex-grow: 1;
     padding: 16px;
-    background: lightgreen;
+    background: #ece7e7;
   }
 }
 aside {
@@ -72,9 +71,8 @@ aside {
   width: 150px;
   padding: 16px;
   position: fixed;
-  top: 0;
+  top: 90;
   left: 0;
-  padding-top: 70px;
   height: 100%;
   > h2 {
     margin-bottom: 4px;
