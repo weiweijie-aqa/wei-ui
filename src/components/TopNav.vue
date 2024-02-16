@@ -1,12 +1,14 @@
 <template>
   <div class="wei-topNav">
-    <div class="wei-logoWrap">
-      <img class="wei-logo" src="../assets//wei-Logo.svg" alt="" />
+    <router-link class="wei-logoWrap" to="/">
+      <img class="wei-logo" src="../assets/wei-Logo.svg" alt="" />
+    </router-link>
+    <div class="wei-menu">
+      <router-link to="/doc">文档</router-link>
     </div>
-    <ul class="wei-menu">
-      <li>文档</li>
-    </ul>
-    <span class="wei-toggleAside" @click="toggleMenu"></span>
+    <span v-if="toggleMenuButtonVisible" class="wei-toggleAside" @click="toggleMenu">
+      <img class="wei-logo-menu" src="../assets/menu.svg" alt="" />
+    </span>
   </div>
 </template>
 
@@ -14,6 +16,12 @@
 import { inject, Ref } from 'vue'
 
 export default {
+  props: {
+    toggleMenuButtonVisible: {
+      type: Boolean,
+      default: false,
+    },
+  },
   setup() {
     const menuVisible = inject<Ref<boolean>>('menuVisible')!
     console.log('wei-topNav获取的menuVisible为:' + menuVisible?.value)
@@ -53,6 +61,7 @@ export default {
     display: flex;
     white-space: nowrap;
     flex-wrap: nowrap;
+    color: #075c64;
     > li {
       margin: 0 1em;
     }
@@ -60,12 +69,15 @@ export default {
   > .wei-toggleAside {
     width: 24px;
     height: 24px;
-    background: red;
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
     display: none;
+    .wei-logo-menu {
+      width: 32px;
+      height: 32px;
+    }
   }
   @media (max-width: 500px) {
     > .wei-menu {
