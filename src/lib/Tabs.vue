@@ -67,7 +67,8 @@ export default {
 
     const defaults = context.slots.default!()
     defaults.forEach((item, index) => {
-      if (item.type !== Tab) {
+      //  @ts-ignore
+      if (item.type.name !== Tab.name) {
         throw new Error('Tabs组件的子组件必须为Tab')
       }
     })
